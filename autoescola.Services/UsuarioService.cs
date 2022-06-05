@@ -3,6 +3,7 @@ using autoescola.Domain.Interfaces;
 using autoescola.Domain.Models;
 using autoescola.Repository.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,6 +14,13 @@ namespace autoescola.Services
         public UsuarioService(ApplicationDbContext db) : base(db)
         {
 
+        }
+
+        public override IQueryable<Usuario> Get()
+        {
+            return _db.Set<Usuario>()
+                .Include(x => x.Pessoa)
+                .AsQueryable();
         }
 
         public override async Task<int> Insert(Usuario model)
