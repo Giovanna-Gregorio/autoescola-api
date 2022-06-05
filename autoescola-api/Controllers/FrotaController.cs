@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace autoescola.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class FrotaController : BaseController<Frota, int>
@@ -33,7 +33,7 @@ namespace autoescola.Controllers
                 Tipo = "ALTERAÇÃO",
                 Data = DateTime.Now,
                 Status = true,
-                UsuarioId = base.GetUsuarioClaims(),
+                //UsuarioId = base.GetUsuarioClaims(),
                 Dados = JsonSerializer.Serialize(frota)
             };
 
@@ -55,7 +55,7 @@ namespace autoescola.Controllers
                 Tipo = "EXCLUSÃO",
                 Data = DateTime.Now,
                 Status = true,
-                UsuarioId = base.GetUsuarioClaims(),
+                //UsuarioId = base.GetUsuarioClaims(),
                 Dados = JsonSerializer.Serialize(frota)
             };
 
